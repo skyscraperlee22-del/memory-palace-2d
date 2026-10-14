@@ -1,0 +1,42 @@
+{
+  "name": "WebSpatial Floor Studio",
+  "short_name": "Floor Studio",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#4268A6",
+  "theme_color": "#4268A6",
+  "xr_main_scene": {
+    "type": "volume",
+    "default_size": {
+      "width": "1.2m",
+      "height": "0.8m",
+      "depth": "0.65m"
+    },
+    "world_alignment": "gravityAligned",
+    "world_scaling": "automatic",
+    "baseplate_visibility": "automatic"
+  },
+  "xr_spatial_scene": {
+    "overrides": {
+      "volume_scene": {
+        "default_size": {
+          "width": "1.2m",
+          "height": "0.8m",
+          "depth": "0.65m"
+        },
+        "world_alignment": "gravityAligned",
+        "world_scaling": "automatic",
+        "baseplate_visibility": "automatic"
+      }
+    }
+  },
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

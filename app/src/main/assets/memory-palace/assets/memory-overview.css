@@ -1,0 +1,639 @@
+.memory-overview {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 16px;
+  padding: clamp(24px, 5vw, 72px);
+  overflow: hidden;
+  color: #193651;
+  background: rgba(230, 239, 250, 0.68);
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(24px) saturate(118%);
+  transition: opacity 360ms ease;
+}
+
+.memory-overview.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.memory-overview__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.memory-overview__heading {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.memory-overview__eyebrow {
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(25, 54, 81, 0.62);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.memory-overview__title {
+  max-width: min(70vw, 760px);
+  margin: 0;
+  overflow: hidden;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.08;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memory-overview__title-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.memory-overview__floors {
+  display: flex;
+  max-width: min(76vw, 840px);
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  overflow-x: auto;
+  padding: 2px;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.memory-overview__floors::-webkit-scrollbar {
+  display: none;
+}
+
+.memory-overview__floor {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  display: inline-flex;
+  min-height: 44px;
+  max-width: 220px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 9px;
+  padding: 0 14px 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 22px;
+  color: rgba(25, 54, 81, 0.72);
+  background: rgba(255, 255, 255, 0.1);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  backdrop-filter: blur(12px);
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.memory-overview__floor:focus,
+.memory-overview__floor:focus-visible,
+.memory-overview__floor:active {
+  outline: 0 !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.memory-overview__floor:hover,
+.memory-overview__floor:focus-visible {
+  color: #193651;
+  border-color: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: 0 8px 20px rgba(41, 68, 96, 0.1);
+  transform: translateY(-1px);
+}
+
+.memory-overview__floor.is-active {
+  color: #193651;
+  border-color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    0 8px 22px rgba(41, 68, 96, 0.08);
+}
+
+.memory-overview__floor-number {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.memory-overview__floor-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memory-overview__floor > *,
+.memory-overview__filter > * {
+  pointer-events: none;
+}
+
+@media (max-width: 680px) {
+  .memory-overview {
+    gap: 12px;
+    padding: 18px 16px;
+  }
+
+  .memory-overview__header {
+    gap: 12px;
+  }
+
+  .memory-overview__floors {
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .memory-overview__floor {
+    min-height: 40px;
+    padding-right: 11px;
+  }
+
+}
+
+.memory-overview__summary {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-top: 0;
+  color: rgba(25, 54, 81, 0.7);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.memory-overview__count {
+  display: block;
+  width: fit-content;
+  margin: 0;
+  color: rgba(25, 54, 81, 0.62);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.memory-overview__filter-label {
+  flex: 0 0 auto;
+  color: rgba(25, 54, 81, 0.5);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.memory-overview__filters {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.memory-overview__filters::-webkit-scrollbar {
+  display: none;
+}
+
+.memory-overview__filter {
+  position: relative;
+  display: inline-flex;
+  width: 92px;
+  min-height: 34px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  color: rgba(25, 54, 81, 0.7);
+  background: rgba(255, 255, 255, 0.12);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.memory-overview__filter:hover,
+.memory-overview__filter:focus-visible {
+  color: #193651;
+  background: rgba(255, 255, 255, 0.46);
+}
+
+.memory-overview__filter.is-active {
+  color: #193651;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.memory-overview__swatch {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: none;
+}
+
+.memory-overview__filter[data-color="all"] .memory-overview__swatch {
+  background: conic-gradient(#4fc7c4 0 25%, #9a78dc 0 50%, #ee7065 0 75%, #e8b72f 0);
+}
+
+.memory-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  align-content: start;
+  column-gap: 14px;
+  row-gap: 36px;
+  overflow: auto;
+  padding: 30px 4px 32px 2px;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+
+.memory-overview__grid.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.memory-overview__card {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 132px;
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--model-color) 7%, rgba(255, 255, 255, 0.62));
+  box-shadow: 0 16px 34px rgba(41, 68, 96, 0.09);
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  overflow: visible;
+  backdrop-filter: blur(16px);
+  animation: memory-card-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: calc(var(--memory-index) * 45ms + 110ms);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.memory-overview__card.is-todo {
+  background: color-mix(in srgb, var(--model-color) 7%, rgba(255, 255, 255, 0.62));
+}
+
+.memory-overview__card:hover {
+  border-color: color-mix(in srgb, var(--model-color) 34%, white);
+  background: color-mix(in srgb, var(--model-color) 10%, rgba(255, 255, 255, 0.7));
+  box-shadow: 0 20px 40px rgba(41, 68, 96, 0.13);
+  transform: translateY(-2px) scale(1);
+}
+
+.memory-overview__card-face {
+  position: relative;
+  display: flex;
+  min-height: 132px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: 5px;
+  padding: 58px 112px 16px 18px;
+  overflow: visible;
+}
+
+.memory-overview__card-heading {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.memory-overview__model {
+  position: absolute;
+  top: -25px;
+  right: -7px;
+  z-index: 2;
+  display: grid;
+  width: 96px;
+  height: 96px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  filter: drop-shadow(0 9px 10px rgba(41, 68, 96, 0.16));
+}
+
+.memory-overview__model img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.memory-overview__model--living-plant {
+  top: -38px;
+  right: 2px;
+}
+
+.memory-overview__model--living-plant img {
+  width: 110px;
+  height: 110px;
+}
+
+.memory-overview__model--living-round-table {
+  top: -18px;
+  right: 2px;
+}
+
+.memory-overview__model--living-round-table img {
+  width: 100px;
+  height: 100px;
+}
+
+.memory-overview__wall-preview {
+  width: 68px;
+  height: 50px;
+  border: 1px solid rgba(25, 54, 81, 0.2);
+  background: #f5f7f7;
+  box-shadow: 5px 5px 0 rgba(117, 134, 145, 0.2);
+}
+
+.memory-overview__type-icon {
+  position: absolute;
+  top: -2px;
+  left: 4px;
+  z-index: 0;
+  display: grid;
+  width: 116px;
+  height: 116px;
+  place-items: center;
+  border: 0;
+  color: var(--model-color);
+  opacity: 0.1;
+  font-size: 82px;
+  font-weight: 800;
+}
+
+.memory-overview__kind {
+  display: none;
+}
+
+.memory-overview__card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #17334d;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.42;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.memory-overview__due {
+  position: relative;
+  z-index: 1;
+  color: #17334d;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  opacity: 0.28;
+  white-space: nowrap;
+}
+
+
+.memory-overview__empty {
+  display: grid;
+  min-height: 240px;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  color: rgba(25, 54, 81, 0.62);
+  text-align: center;
+}
+
+.memory-overview__empty strong {
+  color: #193651;
+  font-size: 20px;
+}
+
+.memory-overview__empty-icon {
+  font-size: 42px;
+}
+
+.spatial-stage {
+  transform-origin: 50% 50%;
+  transition: opacity 420ms ease, transform 480ms cubic-bezier(0.32, 0, 0.18, 1), filter 420ms ease;
+}
+
+.memory-overview-active .spatial-stage {
+  filter: saturate(0.72);
+  opacity: 0;
+  transform: scale(0.68);
+}
+
+.memory-overview-active .level-rail,
+.memory-overview-active .asset-dock,
+.memory-overview-active .object-tools,
+.memory-overview-active .note-space {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 360ms ease !important;
+}
+
+.memory-overview-active .level-rail {
+  transform: none !important;
+}
+
+.memory-overview-active .asset-dock {
+  transform: translateX(-50%) !important;
+}
+
+.memory-overview-active .object-tools {
+  transform: translate(-50%, -112%) !important;
+}
+
+.memory-overview-active .note-space {
+  transform: translate(-50%, 10px) !important;
+}
+
+@keyframes memory-card-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .memory-overview {
+    gap: 12px;
+    padding: 20px 16px;
+  }
+
+  .memory-overview__header {
+    align-items: flex-start;
+  }
+
+  .memory-overview__summary {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .memory-overview__filters {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .memory-overview__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-overview,
+  .memory-overview__card,
+  .memory-overview-active .spatial-stage {
+    animation: none;
+    transition-duration: 1ms;
+  }
+
+  .memory-overview__card {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Neutral gaze feedback replaces the WebView's blue native focus rectangle. */
+.level-item,
+.level-select,
+.level-more,
+.level-add,
+.level-menu button,
+.category-tabs button,
+.asset-card,
+.object-tools button,
+.note-content,
+.note-editor button,
+.note-type-switch button {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.level-item:focus,
+.level-item:focus-visible,
+.level-item:focus-within,
+.level-select:focus,
+.level-select:focus-visible,
+.level-more:focus,
+.level-more:focus-visible,
+.level-add:focus,
+.level-add:focus-visible,
+.level-menu button:focus,
+.level-menu button:focus-visible,
+.category-tabs button:focus,
+.category-tabs button:focus-visible,
+.asset-card:focus,
+.asset-card:focus-visible,
+.object-tools button:focus,
+.object-tools button:focus-visible,
+.note-content:focus,
+.note-content:focus-visible,
+.note-editor button:focus,
+.note-editor button:focus-visible,
+.note-type-switch button:focus,
+.note-type-switch button:focus-visible,
+.memory-overview__floor:focus,
+.memory-overview__floor:focus-visible,
+.memory-overview__filter:focus,
+.memory-overview__filter:focus-visible {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  filter: none !important;
+}
+
+.level-select:focus,
+.level-select:focus-visible,
+.level-more:focus,
+.level-more:focus-visible,
+.level-add:focus,
+.level-add:focus-visible {
+  box-shadow: none !important;
+}
+
+.asset-card:focus,
+.asset-card:focus-visible,
+.asset-card:active {
+  outline: 0 !important;
+  filter: none !important;
+}
+
+.asset-card:focus,
+.asset-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: none !important;
+  box-shadow: 0 8px 18px rgba(20, 42, 72, 0.05),
+    inset 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+.level-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+}
+
+.level-item:hover.active {
+  background: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42) !important;
+}
+
+.level-item:hover .level-more,
+.level-add:hover,
+.level-more:hover,
+.level-menu button:hover,
+.category-tabs button:hover,
+.object-tools button:hover,
+.note-editor button:hover,
+.note-type-switch button:hover,
+.memory-overview__floor:hover,
+.memory-overview__filter:hover {
+  background: rgba(255, 255, 255, 0.48) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.44),
+    0 0 18px rgba(255, 255, 255, 0.2) !important;
+}
+
+.asset-card:hover,
+.note-content:hover {
+  border-color: rgba(255, 255, 255, 0.76) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.34),
+    0 0 20px rgba(255, 255, 255, 0.2) !important;
+}
+
+.level-menu .level-menu-danger:hover,
+.object-tools .tool-danger:hover {
+  color: #ef4f50 !important;
+  background: rgba(239, 79, 80, 0.12) !important;
+}

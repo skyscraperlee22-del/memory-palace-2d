@@ -1,0 +1,73 @@
+{
+  "palette": {
+    "teal": 6604740,
+    "tealDark": 4434600,
+    "blue": 7317468,
+    "white": 16054007,
+    "lightGray": 14212576,
+    "darkGray": 5398891,
+    "black": 2503483
+  },
+  "assets": [
+    {
+      "id": "sofa",
+      "filename": "sofa.glb",
+      "format": "glb",
+      "units": "meters",
+      "origin": "bottom-center",
+      "dimensions": [
+        2,
+        1.06,
+        0.82
+      ]
+    },
+    {
+      "id": "bed",
+      "filename": "bed.glb",
+      "format": "glb",
+      "units": "meters",
+      "origin": "bottom-center",
+      "dimensions": [
+        1.18,
+        1.25,
+        2.06
+      ]
+    },
+    {
+      "id": "wardrobe",
+      "filename": "wardrobe.glb",
+      "format": "glb",
+      "units": "meters",
+      "origin": "bottom-center",
+      "dimensions": [
+        1.08,
+        1.86,
+        0.54
+      ]
+    },
+    {
+      "id": "drawer-cabinet",
+      "filename": "drawer-cabinet.glb",
+      "format": "glb",
+      "units": "meters",
+      "origin": "bottom-center",
+      "dimensions": [
+        0.78,
+        0.93,
+        0.59
+      ]
+    },
+    {
+      "id": "table-lamp",
+      "filename": "table-lamp.glb",
+      "format": "glb",
+      "units": "meters",
+      "origin": "bottom-center",
+      "dimensions": [
+        0.56,
+        0.71,
+        0.56
+      ]
+    }
+  ]
+}

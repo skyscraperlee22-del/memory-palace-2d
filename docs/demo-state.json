@@ -1,0 +1,175 @@
+{
+  "floors": [
+    {
+      "id": "demo-study",
+      "label": "示例 · 记忆书房"
+    },
+    {
+      "id": "demo-office",
+      "label": "示例 · 灵感工作室"
+    }
+  ],
+  "activeFloorId": "demo-study",
+  "objects": [
+    {
+      "id": "demo-0",
+      "assetId": "living-bed",
+      "floorId": "demo-study",
+      "x": -4,
+      "y": 0,
+      "z": -4,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-0",
+          "type": "knowledge",
+          "content": "示例：睡前复习：回想今天学到的三个知识点。",
+          "dueDate": "",
+          "dueTime": "",
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "id": "demo-1",
+      "assetId": "living-armchair",
+      "floorId": "demo-study",
+      "x": -3,
+      "y": 0,
+      "z": 1,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-1",
+          "type": "knowledge",
+          "content": "示例：阅读角：用自己的话解释一个新概念。",
+          "dueDate": "",
+          "dueTime": "",
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "id": "demo-2",
+      "assetId": "living-round-table",
+      "floorId": "demo-study",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-2",
+          "type": "knowledge",
+          "content": "示例：每周回顾：连接知识与生活。",
+          "dueDate": "",
+          "dueTime": "",
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "id": "demo-3",
+      "assetId": "living-plant",
+      "floorId": "demo-study",
+      "x": 4,
+      "y": 0,
+      "z": -3,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-3",
+          "type": "todo",
+          "content": "示例：给窗边的盆栽浇水。",
+          "dueDate": "2026-10-16",
+          "dueTime": "18:00",
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "id": "demo-4",
+      "assetId": "living-table-lamp",
+      "floorId": "demo-study",
+      "x": 2,
+      "y": 0,
+      "z": 3,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-4",
+          "type": "knowledge",
+          "content": "示例：把灵感记下来。",
+          "dueDate": "",
+          "dueTime": "",
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "id": "demo-5",
+      "assetId": "living-picture",
+      "floorId": "demo-study",
+      "x": -5,
+      "y": 0,
+      "z": 4,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-5",
+          "type": "knowledge",
+          "content": "示例：用画面建立记忆线索。",
+          "dueDate": "",
+          "dueTime": "",
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "id": "demo-6",
+      "assetId": "office-binders",
+      "floorId": "demo-study",
+      "x": 4,
+      "y": 0,
+      "z": 2,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-6",
+          "type": "knowledge",
+          "content": "示例：项目笔记：先提出问题，再寻找证据。",
+          "dueDate": "",
+          "dueTime": "",
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "id": "demo-7",
+      "assetId": "school-book-stack",
+      "floorId": "demo-study",
+      "x": 0,
+      "y": 0,
+      "z": -4,
+      "rotation": 0,
+      "locked": false,
+      "notes": [
+        {
+          "id": "demo-note-7",
+          "type": "knowledge",
+          "content": "示例：一章一页：整理书中的关键观点。",
+          "dueDate": "",
+          "dueTime": "",
+          "collapsed": true
+        }
+      ]
+    }
+  ]
+}
