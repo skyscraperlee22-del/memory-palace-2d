@@ -4,7 +4,7 @@
 
 ![记忆宫殿海报](media/poster.png)
 
-[下载 v1.0 APK](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/tag/v1.0) · [PICO 实际窗口截图](media/screenshot-pico-window.png) · [示例场景](media/screenshot-demo-floor.png) · [记录看板](media/screenshot-demo-overview.png) · [素材说明](media/README.md)
+[下载 v1.0 APK](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/tag/v1.0) · [20 项报名资料](docs/SUBMISSION.md) · [PICO 实际窗口截图](media/screenshot-pico-window.png) · [示例场景](media/screenshot-demo-floor.png) · [记录看板](media/screenshot-demo-overview.png) · [素材说明](media/README.md)
 
 ## 功能
 
