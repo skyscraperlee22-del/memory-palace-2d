@@ -31,13 +31,19 @@ Spatial SDK BOM 为 0.13.3，Spatial Tools 为 0.13.1，Kotlin 为 2.0.0，AGP �
 
 ## 构建
 
-安装 Android SDK 35 和 JDK 21，配置 `ANDROID_HOME` 与 `JAVA_HOME` 后运行：
+构建执行目录为此 GitHub 仓库的根目录（平台有该字段时填写 `.`）。此目录直接包含 `settings.gradle`、`build.gradle`、`gradlew`、`gradle/` 与 `app/`，无需再进入名为 `memory-palace-2d` 的子目录。
+
+构建配置统一使用 Groovy `.gradle` 文件，以兼容仅检查传统 Gradle 文件名的打包平台。
+
+安装 Android SDK 35、JDK 21 和 PICO Spatial Editor 0.13，配置 `ANDROID_HOME`、`JAVA_HOME` 与 `PICO_HOME`（PICO SDK 安装目录）后，在仓库根目录运行：
 
 ```bash
-./gradlew assembleDebug
+./gradlew :app:assembleDebug
 ```
 
-输出为 `app/build/outputs/apk/debug/app-debug.apk`。2026-10-14 已在干净的发布目录完成构建验证。Gradle 构建会访问配置中的 PICO Maven 仓库。不要将本机 `local.properties`、签名密钥或用户数据提交到仓库。
+输出为 `app/build/outputs/apk/debug/app-debug.apk`。2026-10-15 已从不含 `local.properties` 和项目构建缓存的源码导出目录完成 Debug / Release 构建验证（使用已安装的 SDK 与依赖缓存），139 个任务执行成功；两个 APK 中的 104 个网页运行资源均与原版校验清单一致。首次构建会访问配置中的 PICO Maven 仓库。不要将本机 `local.properties`、签名密钥或用户数据提交到仓库。
+
+如果平台执行 Release 构建，使用 `./gradlew :app:assembleRelease`，输出为 `app/build/outputs/apk/release/app-release-unsigned.apk`；发布签名由打包平台配置。重新提交作品时请填写构建修复后的 Commit ID，旧的 v1.0 标签仍保留最初发布快照。
 
 安装、启动保留版本：
 
