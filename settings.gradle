@@ -27,4 +27,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'MemoryPalace'
-include ':app', ':editor-asset'
+// The 2D window loads its bundled web assets; it does not use the template scene.
+include ':app'

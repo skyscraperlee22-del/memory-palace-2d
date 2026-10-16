@@ -25,7 +25,9 @@
 | `com.example.memorypalace.WebActivity` | 当前保留 APK 的默认启动入口，以 Android WebView 显示页面 |
 | `com.example.memorypalace.platform.LaunchActivity` | SpatialUI `DefaultWindowContainer` / Planar WindowContainer 入口，使用 `AndroidView(WebView)` 承载同一页面 |
 
-Spatial SDK BOM 为 0.13.3，Spatial Tools 为 0.13.1，Kotlin 为 2.0.0，AGP 为 8.13.2，Gradle 为 8.13。Android compile/target/min SDK 均为 35，ABI 为 arm64-v8a。版本号 1.0，versionCode 1。
+Spatial SDK BOM 为 0.13.3，Kotlin 为 2.0.0，AGP 为 8.13.2，Gradle 为 8.13。Android compile/target/min SDK 均为 35，ABI 为 arm64-v8a。版本号 1.0，versionCode 1。
+
+2D 窗口直接加载随包网页与 GLB 资源，不使用模板中的 `editor-asset` 场景。该模板保留为历史参考，不参与 Gradle 构建；构建不再要求本机安装 Spatial Editor 或设置 `PICO_HOME`。
 
 网页前端保留可运行的编译产物和独立 Overview 扩展。与该运行包准确对应的 React 原始源码尚未恢复，因此本仓库不把其他工程的前端源码当作此版本源码。Android 工程可独立构建。
 
@@ -35,13 +37,15 @@ Spatial SDK BOM 为 0.13.3，Spatial Tools 为 0.13.1，Kotlin 为 2.0.0，AGP �
 
 构建配置统一使用 Groovy `.gradle` 文件，以兼容仅检查传统 Gradle 文件名的打包平台。
 
-安装 Android SDK 35、JDK 21 和 PICO Spatial Editor 0.13，配置 `ANDROID_HOME`、`JAVA_HOME` 与 `PICO_HOME`（PICO SDK 安装目录）后，在仓库根目录运行：
+安装 Android SDK 35 和 JDK 21，配置 `ANDROID_HOME` 与 `JAVA_HOME` 后，在仓库根目录运行：
 
 ```bash
 ./gradlew :app:assembleDebug
 ```
 
-输出为 `app/build/outputs/apk/debug/app-debug.apk`。2026-10-15 已从不含 `local.properties` 和项目构建缓存的源码导出目录完成 Debug / Release 构建验证（使用已安装的 SDK 与依赖缓存），139 个任务执行成功；两个 APK 中的 104 个网页运行资源均与原版校验清单一致。首次构建会访问配置中的 PICO Maven 仓库。不要将本机 `local.properties`、签名密钥或用户数据提交到仓库。
+输出为 `app/build/outputs/apk/debug/app-debug.apk`。2026-10-16 已从不含 `local.properties` 和项目构建缓存的源码导出目录，在不设置 `PICO_HOME` 的情况下完成 Debug / Release 构建验证（使用已安装的 Android SDK 与依赖缓存），85 个任务执行成功；两个 APK 中的 104 个网页运行资源均与原版校验清单一致。首次构建会访问配置中的 PICO Maven 仓库。不要将本机 `local.properties`、签名密钥或用户数据提交到仓库。
+
+旧配置包含未使用的 `editor-asset` 模板模块，加载 Spatial Tools 插件时会查找本机 Spatial Editor。已复现：缺少 `PICO_HOME` 及其他编辑器路径配置时，即使 Gradle 文件完整，也会报 `Spatial Tools is not installed`。当前配置已移除该模块的构建引用。平台的具体失败阶段仍应以其完整日志为准。
 
 如果平台执行 Release 构建，使用 `./gradlew :app:assembleRelease`，输出为 `app/build/outputs/apk/release/app-release-unsigned.apk`；发布签名由打包平台配置。重新提交作品时请填写构建修复后的 Commit ID，旧的 v1.0 标签仍保留最初发布快照。
 
