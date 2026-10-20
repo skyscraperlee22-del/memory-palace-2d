@@ -4,7 +4,9 @@
 
 ![记忆宫殿海报](media/poster.png)
 
-[下载 v1.0 APK](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/tag/v1.0) · [20 项报名资料](docs/SUBMISSION.md) · [PICO 实际窗口截图](media/screenshot-pico-window.png) · [示例场景](media/screenshot-demo-floor.png) · [记录看板](media/screenshot-demo-overview.png) · [素材说明](media/README.md)
+[下载记忆宫殿 v1.0.1 APK](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/tag/v1.0.1) · [20 项报名资料](docs/SUBMISSION.md) · [PICO 实际窗口截图](media/screenshot-pico-window.png) · [示例场景](media/screenshot-demo-floor.png) · [记录看板](media/screenshot-demo-overview.png) · [素材说明](media/README.md)
+
+v1.0.1 已将系统应用名称改为「记忆宫殿」，更换为拱门、台阶与书本图标，并移除模板的旧 3D 图标配置。安装包与原版使用相同签名，可覆盖安装升级。
 
 ## 功能
 
@@ -25,7 +27,7 @@
 | `com.example.memorypalace.WebActivity` | 当前保留 APK 的默认启动入口，以 Android WebView 显示页面 |
 | `com.example.memorypalace.platform.LaunchActivity` | SpatialUI `DefaultWindowContainer` / Planar WindowContainer 入口，使用 `AndroidView(WebView)` 承载同一页面 |
 
-Spatial SDK BOM 为 0.13.3，Kotlin 为 2.0.0，AGP 为 8.13.2，Gradle 为 8.13。Android compile/target/min SDK 均为 35，ABI 为 arm64-v8a。版本号 1.0，versionCode 1。
+Spatial SDK BOM 为 0.13.3，Kotlin 为 2.0.0，AGP 为 8.13.2，Gradle 为 8.13。Android compile/target/min SDK 均为 35，ABI 为 arm64-v8a。版本号 1.0.1，versionCode 2。
 
 2D 窗口直接加载随包网页与 GLB 资源，不使用模板中的 `editor-asset` 场景。该模板保留为历史参考，不参与 Gradle 构建；构建不再要求本机安装 Spatial Editor 或设置 `PICO_HOME`。
 
@@ -49,17 +51,17 @@ Spatial SDK BOM 为 0.13.3，Kotlin 为 2.0.0，AGP 为 8.13.2，Gradle 为 8.13
 
 如果平台执行 Release 构建，使用 `./gradlew :app:assembleRelease`，输出为 `app/build/outputs/apk/release/app-release-unsigned.apk`；发布签名由打包平台配置。重新提交作品时请填写构建修复后的 Commit ID，旧的 v1.0 标签仍保留最初发布快照。
 
-安装、启动保留版本：
+安装、启动当前版本：
 
 ```bash
-pico-cli app install MemoryPalace-2D-v1.0-debug.apk --device <device-id>
+pico-cli app install MemoryPalace-2D-v1.0.1.apk --replace --device <device-id>
 pico-cli app launch com.example.memorypalace --activity .WebActivity --device <device-id>
 ```
 
-包名与旧版相同；在已有用户数据的设备上安装前请保留用户数据备份，签名不一致时不要通过卸载解决。发布页 APK 为原版保留文件，SHA-256：
+包名与旧版相同；在已有用户数据的设备上安装前请保留用户数据备份，签名不一致时不要通过卸载解决。v1.0.1 APK 的 SHA-256：
 
 ```text
-c0613f1e23112118f6dc026ccbbe066dcfb133a957a4bc7e4f3ff1459da155d7
+3e07e4d1a19ff1246701f23ec62ef45ea12c374e0e25bb8d3f4db170ddfe79d4
 ```
 
 ## 浏览器预览

@@ -12,7 +12,7 @@
 
 6. **类型标签：** PICO、空间计算、2D 窗口、记忆训练、知识管理、学习工具、效率工具
 
-7. **Icon（应用图标）：** [下载 icon.png（1024 × 1024）](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/download/v1.0/icon.png)
+7. **Icon（应用图标）：** [下载 icon.png（1254 × 1254）](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/download/v1.0.1/icon.png)
 
 8. **海报：** [下载 poster.png（1536 × 1024）](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/download/v1.0/poster.png)。AI 生成的产品概念海报。
 
@@ -24,7 +24,7 @@
 
 12. **项目 GitHub URL：** https://github.com/skyscraperlee22-del/memory-palace-2d
 
-13. **Commit ID：** `4fadfc6a0f945c16433a21d74809f541b164c899`（2026-10-16 移除无用的本机 Spatial Editor 构建依赖；重新提交作品时使用此 ID）
+13. **Commit ID：** 使用 [v1.0.1 发布页](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/tag/v1.0.1) 正文中列出的完整 Commit ID；该 ID 同时填写在发布附件 `SUBMISSION.md` 中。
 
 14. **仓库权限：** 公开 / Public
 
@@ -34,18 +34,18 @@
 
 17. **使用的 AI 模型：** GPT-6（Codex，本次整理与发布）；此前开发使用的具体模型版本未记录。海报使用 OpenAI 图像生成工具。
 
-18. **版本号：** 1.0（versionCode 1；2026-10-16 修复构建依赖，应用版本保持不变）
+18. **版本号：** 1.0.1（versionCode 2）
 
-19. **版本公告：** 发布记忆宫殿 1.0 的 2D 窗口版，提供主题楼层、分类物体库、物体笔记、带日期时间的待办及楼层记录看板，数据保存在本机。同步提供 Android 工程、网页运行资源、原版 APK、应用图标、海报与截图。本版不包含云同步、系统待办提醒或 Fullspace 漫游。
+19. **版本公告：** v1.0.1 将系统应用名称修正为「记忆宫殿」，更换为拱门书本图标，并移除旧模板 3D 图标配置。支持同签名覆盖升级。保留 2D 窗口版的楼层、物体、笔记、待办和记录看板功能。
 
 20. **队友名字：** 无
 
 ## 安装包与校验
 
-[下载原版 APK](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/download/v1.0/MemoryPalace-2D-v1.0-debug.apk) · [v1.0 发布页](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/tag/v1.0) · [素材来源说明](../media/README.md)
+[下载记忆宫殿 v1.0.1 APK](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/download/v1.0.1/MemoryPalace-2D-v1.0.1.apk) · [v1.0.1 发布页](https://github.com/skyscraperlee22-del/memory-palace-2d/releases/tag/v1.0.1) · [素材来源说明](../media/README.md)
 
-APK SHA-256：`c0613f1e23112118f6dc026ccbbe066dcfb133a957a4bc7e4f3ff1459da155d7`。
+APK SHA-256：`3e07e4d1a19ff1246701f23ec62ef45ea12c374e0e25bb8d3f4db170ddfe79d4`。
 
 根目录直接提供完整 Gradle 工程与 Wrapper。2026-10-16 已移除 2D 窗口未使用的 `editor-asset` 模板模块的构建引用，避免要求构建服务器安装本机 Spatial Editor。Debug / Release 均已在不设置 `PICO_HOME` 的干净源码导出目录构建通过，运行资源与原版一致。平台如有“构建执行目录”字段，填写 `.`（仓库根目录）。
 
-原始 v1.0 标签和上面的 APK 下载链接保留最初发布快照；在线重新构建时应使用第 13 项的新 Commit ID。报名文档的后续提交仅更新填写信息。
+原始 v1.0 标签保留最初发布快照；本次提交请使用 v1.0.1 发布页及附件列出的完整 Commit ID，以获得已修正名称与图标的安装包。
